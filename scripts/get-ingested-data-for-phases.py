@@ -13,9 +13,9 @@ def parse_args():
 
 def parse_time_intervals(log_path):
     ret = {
-        'SCALE UP': {'start': None, 'end': None},
-        'COMPUTE PLATEAU': {'start': None, 'end': None},
-        'SCALE DOWN': {'start': None, 'end': None},
+        'SCALE UP': {'start': None, 'end': None, 'elapsed': None},
+        'COMPUTE PLATEAU': {'start': None, 'end': None, 'elapsed': None},
+        'SCALE DOWN': {'start': None, 'end': None, 'elapsed': None},
     }
     pattern = r'(COMPUTE PLATEAU|SCALE UP|SCALE DOWN) TIME IS (STARTING|FINISHED) AT (.*)'
     with open(log_path) as infile:
@@ -26,6 +26,12 @@ def parse_time_intervals(log_path):
                 start_or_end = 'start' if match.group(2) == 'STARTING' else 'end'
                 timestamp = datetime.strptime(match.group(3), '%a %b %d %H:%M:%S UTC %Y')
                 ret[phase][start_or_end] = timestamp.strftime('%Y-%m-%dT%H:%M:%SZ')
+
+    for phase, phase_dict in ret.items():
+        elapsed = {}
+        elapsed['start'] = datetime.strptime(phase_dict['start'], '%Y-%m-%dT%H:%M:%SZ')
+        elapsed['end'] = datetime.strptime(phase_dict['end'], '%Y-%m-%dT%H:%M:%SZ')
+        ret[phase]['elapsed'] = int(round((elapsed['end'] - elapsed['start']).total_seconds() / 60))
 
     # Ensure correct format of returned list
     assert len(ret) == 3
@@ -44,7 +50,7 @@ def main():
         phase_dict = time_interval_dicts[phase]
         cmd_args = ['scripts/get-ingested-data.sh', cluster_name, phase_dict['start'], phase_dict['end']]
         ingested_bytes = sp.check_output(cmd_args).decode().strip()
-        print(f"{cluster_name}'s log group ingested {ingested_bytes} during {phase}")
+        print(f"{cluster_name}'s log group ingested {ingested_bytes} Bytes during {phase} that elapsed {phase_dict['elapsed']} min")
 
 
 if __name__ == '__main__':

@@ -13,4 +13,4 @@ aws cloudwatch get-metric-statistics \
     --namespace AWS/Logs \
     --statistics Sum \
     --region us-east-1 \
-    --dimensions Name=LogGroupName,Value=/aws/parallelcluster/${CLUSTER_NAME} | jq '.Datapoints[0].Sum'
+    --dimensions Name=LogGroupName,Value=/aws/parallelcluster/${CLUSTER_NAME} | jq '.Datapoints[].Sum' | awk '{s+=$1} END {printf "%.0f", s}'
