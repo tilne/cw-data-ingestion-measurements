@@ -3,6 +3,9 @@ set -e
 
 SCHEDULER=$1
 MAX_QUEUE_LENGTH=$2
+if [ -n "$3" ]; then
+    SUFFIX="-$3"
+fi
 
 if [ -z "$SCHEDULER" ]; then
     echo "Must pass scheduler as first arg"
@@ -22,7 +25,7 @@ fi
 
 # Create the cluster config file
 cluster_config=$(python scripts/make-pcluster-config.py --scheduler $SCHEDULER --max_queue_size $MAX_QUEUE_LENGTH)
-cluster_name="${SCHEDULER}-${MAX_QUEUE_LENGTH}"
+cluster_name="${SCHEDULER}-${MAX_QUEUE_LENGTH}${SUFFIX}"
 
 
 # Create the cluster
@@ -49,20 +52,21 @@ cluster_user=centos
 echo "Setting MAX_QUEUE_LENGTH in master's .bashrc"
 set -x
 command="echo >> .bashrc 'export MAX_QUEUE_LENGTH=${MAX_QUEUE_LENGTH}'"
+disable_host_check="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 echo $command
-ssh $cluster_user@$master_ip "$command"
+ssh ${disable_host_check} $cluster_user@$master_ip "$command"
 
 # Copy over the scripts for the given scheduler
 echo "Copying over scripts"
-scp scripts/${SCHEDULER}/*.sh $cluster_user@$master_ip:/shared/
+scp ${disable_host_check} scripts/${SCHEDULER}/*.sh $cluster_user@$master_ip:/shared/
 
 # Call the orchestration script
 echo "Calling orchestration script"
-ssh $cluster_user@$master_ip /shared/orchestrate.sh
+ssh ${disable_host_check} $cluster_user@$master_ip /shared/orchestrate.sh
 
 # Copy the log file back over
 echo "Copying log file back over"
-scp $cluster_user@$master_ip:/shared/cluster-timeline-log.txt log-files/${cluster_name}-timeline-log.txt
+scp ${disable_host_check} $cluster_user@$master_ip:/shared/cluster-timeline-log.txt log-files/${cluster_name}-timeline-log.txt
 
 echo "Getting the number of bytes ingested by the ${cluster_name}'s log group during the various phases of testing"
 python scripts/get-ingested-data-for-phases.py --timeline-log log-files/${cluster_name}-timeline-log.txt
