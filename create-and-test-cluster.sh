@@ -29,6 +29,8 @@ cluster_name="${SCHEDULER}-${MAX_QUEUE_LENGTH}${SUFFIX}"
 
 
 # Create the cluster
+echo "Creating cluster ${cluster_name} with the following config:"
+cat $cluster_config
 pcluster create -c $cluster_config $cluster_name
 
 # Sleep for 60 seconds to make sure cluster is ready to go
