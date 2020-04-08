@@ -27,3 +27,5 @@ The units are bytes. The COMPUTE PLATEAU phase lasts 20 minutes, so multiply tha
 #### Things I don't think you'll need to change, but I'm not sure:
 
 * The custom AMI ID (if I shared it with your account I don't think you can use the same ID)
+  * it's being used because it contains the changes that were merged into the develop branch of the cookbook repo yesterday to drop two of the cfn logs.
+* The use of us-east-1 is assumed by the cluster config template and also the call in scripts/get-ingested-data.sh.
