@@ -516,3 +516,19 @@ Submitted batch job 498
 Submitted batch job 499
 Submitted batch job 500
 Submitted batch job 501
++ echo 'Copying log file back over'
+Copying log file back over
++ scp centos@52.4.110.120:/shared/cluster-timeline-log.txt log-files/slurm-500-timeline-log.txt
++ echo 'Getting the number of bytes ingested by the slurm-500'\''s log group during the various phases of testing'
+Getting the number of bytes ingested by the slurm-500's log group during the various phases of testing
++ python scripts/get-ingested-data-for-phases.py --timeline-log log-files/slurm-500-timeline-log.txt
+slurm-500's log group ingested 165229477 during SCALE UP
+slurm-500's log group ingested 647716 during COMPUTE PLATEAU
+slurm-500's log group ingested 458009 during SCALE DOWN
++ echo 'Deleting cluster'
+Deleting cluster
++ pcluster delete --keep-logs slurm-500
+Deleting: slurm-500
+Configuring slurm-500's CloudWatch log groups to persist past cluster deletion.
+Status: DELETE_IN_PROGRESSStatus: ComputeSecurityGroupEgress - DELETE_IN_PROGRESS                         Status: ComputeSecurityGroupEgress - DELETE_COMPLETE                            Status: MasterEIP - DELETE_COMPLETE                                             Status: MasterEIP - DELETE_COMPLETE                                             Status: ComputeFleet - DELETE_COMPLETE                                          Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: SQS - DELETE_IN_PROGRESS                                                Status: RootRole - DELETE_COMPLETE                                              Status: CloudWatchLogsSubstack - DELETE_COMPLETE                                Status: MasterSecurityGroup - DELETE_COMPLETE                                   Status: EBSCfnStack - DELETE_COMPLETE                                           Status: DynamoDBTable - DELETE_COMPLETE                                         Status: DynamoDBTable - DELETE_COMPLETE                                         Status: DynamoDBTable - DELETE_COMPLETE                                         Status: DynamoDBTable - DELETE_COMPLETE                                         
+Cluster deleted successfully.
