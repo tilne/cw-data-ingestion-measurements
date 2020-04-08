@@ -46,11 +46,17 @@ def main():
     args = parse_args()
     cluster_name = re.search(r'(.*)-timeline-log.txt', os.path.basename(args.timeline_log)).group(1)
     time_interval_dicts = parse_time_intervals(args.timeline_log)
+    ingested_dict = {}
     for phase in ['SCALE UP', 'COMPUTE PLATEAU', 'SCALE DOWN']:
         phase_dict = time_interval_dicts[phase]
         cmd_args = ['scripts/get-ingested-data.sh', cluster_name, phase_dict['start'], phase_dict['end']]
-        ingested_bytes = sp.check_output(cmd_args).decode().strip()
-        print(f"{cluster_name}'s log group ingested {ingested_bytes} Bytes during {phase} that elapsed {phase_dict['elapsed']} min")
+        ingested_bytes = int(sp.check_output(cmd_args).decode().strip())
+        ingested_MB = ingested_bytes / 1048576
+        ingested_dict[phase] = ingested_MB
+        print(f"{cluster_name}'s log group ingested {ingested_MB} MB during {phase} that elapsed {phase_dict['elapsed']} min")
+
+    print(f"{cluster_name}'s log group ingested during SCALE UP/SCALE DOWN {round(ingested_dict['SCALE UP'] + ingested_dict['SCALE DOWN'],1 )} MB")
+    print(f"{cluster_name}'s log group ingested during COMPUTE PLATEAU per hour {round(ingested_dict['COMPUTE PLATEAU'] * 3, 1)} MB")
 
 
 if __name__ == '__main__':
