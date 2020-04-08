@@ -1,0 +1,134 @@
+Beginning cluster creation for cluster: slurm-100
+Creating stack named: parallelcluster-slurm-100
+Status: parallelcluster-slurm-100 - CREATE_IN_PROGRESS                          Status: parallelcluster-slurm-100 - CREATE_IN_PROGRESS                          Status: parallelcluster-slurm-100 - CREATE_IN_PROGRESS                          Status: parallelcluster-slurm-100 - CREATE_IN_PROGRESS                          Status: parallelcluster-slurm-100 - CREATE_IN_PROGRESS                          Status: parallelcluster-slurm-100 - CREATE_IN_PROGRESS                          Status: parallelcluster-slurm-100 - CREATE_IN_PROGRESS                          Status: SQS - CREATE_COMPLETE                                                   Status: SNS - CREATE_IN_PROGRESS                                                Status: ComputeSecurityGroup - CREATE_IN_PROGRESS                               Status: ComputeSecurityGroupEgress - CREATE_IN_PROGRESS                         Status: ComputeSecurityGroupNormalEgress - CREATE_COMPLETE                      Status: AssociateEIP - CREATE_IN_PROGRESS                                       Status: ParallelClusterPolicies - CREATE_IN_PROGRESS                            Status: ParallelClusterPolicies - CREATE_IN_PROGRESS                            Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: RootInstanceProfile - CREATE_COMPLETE                                   Status: MasterServerLaunchTemplate - CREATE_COMPLETE                            Status: MasterServer - CREATE_IN_PROGRESS                                       Status: MasterServer - CREATE_IN_PROGRESS                                       Status: MasterServer - CREATE_IN_PROGRESS                                       Status: MasterServerWaitCondition - CREATE_IN_PROGRESS                          Status: ComputeServerLaunchTemplate - CREATE_IN_PROGRESS                        Status: ComputeServerLaunchTemplate - CREATE_COMPLETE                           Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: parallelcluster-slurm-100 - CREATE_COMPLETE                             
+MasterPublicIP: 3.220.33.203
+ClusterUser: centos
+MasterPrivateIP: 172.31.68.33
+Setting MAX_QUEUE_LENGTH in master's .bashrc
++ command='echo >> .bashrc '\''export MAX_QUEUE_LENGTH=100'\'''
++ echo echo '>>' .bashrc ''\''export' 'MAX_QUEUE_LENGTH=100'\'''
+echo >> .bashrc 'export MAX_QUEUE_LENGTH=100'
++ ssh centos@3.220.33.203 'echo >> .bashrc '\''export MAX_QUEUE_LENGTH=100'\'''
+Warning: Permanently added '3.220.33.203' (ECDSA) to the list of known hosts.
++ echo 'Copying over scripts'
+Copying over scripts
++ scp scripts/slurm/execution_job.sh scripts/slurm/job.sh scripts/slurm/orchestrate.sh scripts/slurm/submission.sh centos@3.220.33.203:/shared/
++ echo 'Calling orchestration script'
+Calling orchestration script
++ ssh centos@3.220.33.203 /shared/orchestrate.sh
+Submitted batch job 2
+Submitted batch job 3
+Submitted batch job 4
+Submitted batch job 5
+Submitted batch job 6
+Submitted batch job 7
+Submitted batch job 8
+Submitted batch job 9
+Submitted batch job 10
+Submitted batch job 11
+Submitted batch job 12
+Submitted batch job 13
+Submitted batch job 14
+Submitted batch job 15
+Submitted batch job 16
+Submitted batch job 17
+Submitted batch job 18
+Submitted batch job 19
+Submitted batch job 20
+Submitted batch job 21
+Submitted batch job 22
+Submitted batch job 23
+Submitted batch job 24
+Submitted batch job 25
+Submitted batch job 26
+Submitted batch job 27
+Submitted batch job 28
+Submitted batch job 29
+Submitted batch job 30
+Submitted batch job 31
+Submitted batch job 32
+Submitted batch job 33
+Submitted batch job 34
+Submitted batch job 35
+Submitted batch job 36
+Submitted batch job 37
+Submitted batch job 38
+Submitted batch job 39
+Submitted batch job 40
+Submitted batch job 41
+Submitted batch job 42
+Submitted batch job 43
+Submitted batch job 44
+Submitted batch job 45
+Submitted batch job 46
+Submitted batch job 47
+Submitted batch job 48
+Submitted batch job 49
+Submitted batch job 50
+Submitted batch job 51
+Submitted batch job 52
+Submitted batch job 53
+Submitted batch job 54
+Submitted batch job 55
+Submitted batch job 56
+Submitted batch job 57
+Submitted batch job 58
+Submitted batch job 59
+Submitted batch job 60
+Submitted batch job 61
+Submitted batch job 62
+Submitted batch job 63
+Submitted batch job 64
+Submitted batch job 65
+Submitted batch job 66
+Submitted batch job 67
+Submitted batch job 68
+Submitted batch job 69
+Submitted batch job 70
+Submitted batch job 71
+Submitted batch job 72
+Submitted batch job 73
+Submitted batch job 74
+Submitted batch job 75
+Submitted batch job 76
+Submitted batch job 77
+Submitted batch job 78
+Submitted batch job 79
+Submitted batch job 80
+Submitted batch job 81
+Submitted batch job 82
+Submitted batch job 83
+Submitted batch job 84
+Submitted batch job 85
+Submitted batch job 86
+Submitted batch job 87
+Submitted batch job 88
+Submitted batch job 89
+Submitted batch job 90
+Submitted batch job 91
+Submitted batch job 92
+Submitted batch job 93
+Submitted batch job 94
+Submitted batch job 95
+Submitted batch job 96
+Submitted batch job 97
+Submitted batch job 98
+Submitted batch job 99
+Submitted batch job 100
+Submitted batch job 101
++ echo 'Copying log file back over'
+Copying log file back over
++ scp centos@3.220.33.203:/shared/cluster-timeline-log.txt log-files/slurm-100-timeline-log.txt
++ echo 'Getting the number of bytes ingested by the slurm-100'\''s log group during the various phases of testing'
+Getting the number of bytes ingested by the slurm-100's log group during the various phases of testing
++ python scripts/get-ingested-data-for-phases.py --timeline-log log-files/slurm-100-timeline-log.txt
+slurm-100's log group ingested 23260766 during SCALE UP
+slurm-100's log group ingested 101607 during COMPUTE PLATEAU
+slurm-100's log group ingested 109749 during SCALE DOWN
++ echo 'Deleting cluster'
+Deleting cluster
++ pcluster delete --keep-logs slurm-100
+Deleting: slurm-100
+Configuring slurm-100's CloudWatch log groups to persist past cluster deletion.
+Status: DELETE_IN_PROGRESSStatus: ComputeSecurityGroupEgress - DELETE_IN_PROGRESS                         Status: ComputeSecurityGroupEgress - DELETE_COMPLETE                            Status: AssociateEIP - DELETE_COMPLETE                                          Status: MasterEIP - DELETE_COMPLETE                                             Status: MasterEIP - DELETE_COMPLETE                                             Status: ComputeSecurityGroup - DELETE_IN_PROGRESS                               Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: MasterENI - DELETE_IN_PROGRESS                                          Status: RootRole - DELETE_COMPLETE                                              Status: MasterENI - DELETE_COMPLETE                                             Status: EBSCfnStack - DELETE_COMPLETE                                           Status: DynamoDBTable - DELETE_COMPLETE                                         Status: DynamoDBTable - DELETE_COMPLETE                                         Status: DynamoDBTable - DELETE_COMPLETE                                         Status: DynamoDBTable - DELETE_COMPLETE                                         Status: DynamoDBTable - DELETE_COMPLETE                                         
+Cluster deleted successfully.

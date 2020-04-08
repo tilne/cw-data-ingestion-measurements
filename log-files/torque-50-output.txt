@@ -1,0 +1,84 @@
+Beginning cluster creation for cluster: torque-50
+Creating stack named: parallelcluster-torque-50
+Status: parallelcluster-torque-50 - CREATE_IN_PROGRESS                          Status: parallelcluster-torque-50 - CREATE_IN_PROGRESS                          Status: parallelcluster-torque-50 - CREATE_IN_PROGRESS                          Status: parallelcluster-torque-50 - CREATE_IN_PROGRESS                          Status: parallelcluster-torque-50 - CREATE_IN_PROGRESS                          Status: SQS - CREATE_COMPLETE                                                   Status: SNS - CREATE_IN_PROGRESS                                                Status: RootRole - CREATE_COMPLETE                                              Status: SNS - CREATE_COMPLETE                                                   Status: SQSPolicy - CREATE_COMPLETE                                             Status: DynamoDBTable - CREATE_COMPLETE                                         Status: ParallelClusterPolicies - CREATE_IN_PROGRESS                            Status: ParallelClusterPolicies - CREATE_IN_PROGRESS                            Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: ParallelClusterPolicies - CREATE_COMPLETE                               Status: RootInstanceProfile - CREATE_COMPLETE                                   Status: MasterServerLaunchTemplate - CREATE_IN_PROGRESS                         Status: MasterServer - CREATE_IN_PROGRESS                                       Status: MasterServer - CREATE_IN_PROGRESS                                       Status: MasterServer - CREATE_IN_PROGRESS                                       Status: MasterServer - CREATE_COMPLETE                                          Status: ComputeServerLaunchTemplate - CREATE_IN_PROGRESS                        Status: ComputeFleet - CREATE_IN_PROGRESS                                       Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: ComputeFleet - CREATE_COMPLETE                                          Status: MasterServerWaitCondition - CREATE_COMPLETE                             Status: parallelcluster-torque-50 - CREATE_COMPLETE                             
+MasterPublicIP: 52.205.210.211
+ClusterUser: centos
+MasterPrivateIP: 172.31.70.234
+Setting MAX_QUEUE_LENGTH in master's .bashrc
++ command='echo >> .bashrc '\''export MAX_QUEUE_LENGTH=50'\'''
++ echo echo '>>' .bashrc ''\''export' 'MAX_QUEUE_LENGTH=50'\'''
+echo >> .bashrc 'export MAX_QUEUE_LENGTH=50'
++ ssh centos@52.205.210.211 'echo >> .bashrc '\''export MAX_QUEUE_LENGTH=50'\'''
+Warning: Permanently added '52.205.210.211' (ECDSA) to the list of known hosts.
++ echo 'Copying over scripts'
+Copying over scripts
++ scp scripts/torque/execution_job.sh scripts/torque/job.sh scripts/torque/orchestrate.sh scripts/torque/submission.sh centos@52.205.210.211:/shared/
++ echo 'Calling orchestration script'
+Calling orchestration script
++ ssh centos@52.205.210.211 /shared/orchestrate.sh
+0[].ip-172-31-70-234.ec2.internal
+1[].ip-172-31-70-234.ec2.internal
+2[].ip-172-31-70-234.ec2.internal
+3[].ip-172-31-70-234.ec2.internal
+4[].ip-172-31-70-234.ec2.internal
+5[].ip-172-31-70-234.ec2.internal
+6[].ip-172-31-70-234.ec2.internal
+7[].ip-172-31-70-234.ec2.internal
+8[].ip-172-31-70-234.ec2.internal
+9[].ip-172-31-70-234.ec2.internal
+10[].ip-172-31-70-234.ec2.internal
+11[].ip-172-31-70-234.ec2.internal
+12[].ip-172-31-70-234.ec2.internal
+13[].ip-172-31-70-234.ec2.internal
+14[].ip-172-31-70-234.ec2.internal
+15[].ip-172-31-70-234.ec2.internal
+16[].ip-172-31-70-234.ec2.internal
+17[].ip-172-31-70-234.ec2.internal
+18[].ip-172-31-70-234.ec2.internal
+19[].ip-172-31-70-234.ec2.internal
+20[].ip-172-31-70-234.ec2.internal
+21[].ip-172-31-70-234.ec2.internal
+22[].ip-172-31-70-234.ec2.internal
+23[].ip-172-31-70-234.ec2.internal
+24[].ip-172-31-70-234.ec2.internal
+25[].ip-172-31-70-234.ec2.internal
+26[].ip-172-31-70-234.ec2.internal
+27[].ip-172-31-70-234.ec2.internal
+28[].ip-172-31-70-234.ec2.internal
+29[].ip-172-31-70-234.ec2.internal
+30[].ip-172-31-70-234.ec2.internal
+31[].ip-172-31-70-234.ec2.internal
+32[].ip-172-31-70-234.ec2.internal
+33[].ip-172-31-70-234.ec2.internal
+34[].ip-172-31-70-234.ec2.internal
+35[].ip-172-31-70-234.ec2.internal
+36[].ip-172-31-70-234.ec2.internal
+37[].ip-172-31-70-234.ec2.internal
+38[].ip-172-31-70-234.ec2.internal
+39[].ip-172-31-70-234.ec2.internal
+40[].ip-172-31-70-234.ec2.internal
+41[].ip-172-31-70-234.ec2.internal
+42[].ip-172-31-70-234.ec2.internal
+43[].ip-172-31-70-234.ec2.internal
+44[].ip-172-31-70-234.ec2.internal
+45[].ip-172-31-70-234.ec2.internal
+46[].ip-172-31-70-234.ec2.internal
+47[].ip-172-31-70-234.ec2.internal
+48[].ip-172-31-70-234.ec2.internal
+49[].ip-172-31-70-234.ec2.internal
++ echo 'Copying log file back over'
+Copying log file back over
++ scp centos@52.205.210.211:/shared/cluster-timeline-log.txt log-files/torque-50-timeline-log.txt
++ echo 'Getting the number of bytes ingested by the torque-50'\''s log group during the various phases of testing'
+Getting the number of bytes ingested by the torque-50's log group during the various phases of testing
++ python scripts/get-ingested-data-for-phases.py --timeline-log log-files/torque-50-timeline-log.txt
+torque-50's log group ingested 2347128 during SCALE UP
+torque-50's log group ingested 93295 during COMPUTE PLATEAU
+torque-50's log group ingested 46841 during SCALE DOWN
++ echo 'Deleting cluster'
+Deleting cluster
++ pcluster delete --keep-logs torque-50
+Deleting: torque-50
+Configuring torque-50's CloudWatch log groups to persist past cluster deletion.
+Status: DELETE_IN_PROGRESSStatus: ComputeSecurityGroupEgress - DELETE_IN_PROGRESS                         Status: ComputeSecurityGroupEgress - DELETE_COMPLETE                            Status: SNS - DELETE_IN_PROGRESS                                                Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: ComputeSecurityGroup - DELETE_COMPLETE                                  Status: RootRole - DELETE_IN_PROGRESS                                           Status: RootRole - DELETE_COMPLETE                                              Status: CloudWatchLogsSubstack - DELETE_COMPLETE                                Status: MasterSecurityGroup - DELETE_COMPLETE                                   Status: EBSCfnStack - DELETE_COMPLETE                                           Status: DynamoDBTable - DELETE_COMPLETE                                         Status: DynamoDBTable - DELETE_COMPLETE                                         Status: DynamoDBTable - DELETE_COMPLETE                                         Status: DynamoDBTable - DELETE_COMPLETE                                         
+Cluster deleted successfully.
